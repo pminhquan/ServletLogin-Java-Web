@@ -87,7 +87,7 @@ public class CategoryServlet extends HttpServlet {
 
 
             response.sendRedirect(
-                    "categories"
+                    "categories?message=delete_success"
             );
 
 
@@ -230,9 +230,8 @@ public class CategoryServlet extends HttpServlet {
             categoryService.insert(category);
 
 
-
             response.sendRedirect(
-                    "categories"
+                    "categories?message=add_success"
             );
 
 
@@ -380,9 +379,8 @@ public class CategoryServlet extends HttpServlet {
             categoryService.update(category);
 
 
-
             response.sendRedirect(
-                    "categories"
+                    "categories?message=update_success"
             );
 
         }

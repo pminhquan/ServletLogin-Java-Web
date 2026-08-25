@@ -5,7 +5,41 @@
 
 <%@ include file="common/header.jsp" %>
 
+<%
+String message =
+        request.getParameter("message");
+%>
 
+
+<%
+if("add_success".equals(message)){
+%>
+
+<div class="alert alert-success">
+    Category added successfully!
+</div>
+
+<%
+}
+else if("update_success".equals(message)){
+%>
+
+<div class="alert alert-success">
+    Category updated successfully!
+</div>
+
+<%
+}
+else if("delete_success".equals(message)){
+%>
+
+<div class="alert alert-success">
+    Category deleted successfully!
+</div>
+
+<%
+}
+%>
 
 <div class="card shadow">
 
