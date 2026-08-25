@@ -1,109 +1,122 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 
-<html>
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <title>Add Category</title>
-
-</head>
-
-
-<body>
-
-
-<h2>Add Category</h2>
-
-
-<%
-    String error =
-            (String) request.getAttribute("error");
-
-    String name =
-            request.getParameter("name");
-
-    String description =
-            request.getParameter("description");
-
-
-    if(name == null){
-        name = "";
-    }
-
-    if(description == null){
-        description = "";
-    }
-
-
-    if(error != null){
-%>
-
-<p style="color:red">
-    <%= error %>
-</p>
-
-<%
-    }
-%>
+<%@ include file="common/header.jsp" %>
 
 
 
-<form action="categories?action=insert"
+<div class="row justify-content-center">
+
+
+<div class="col-md-6">
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+<h3 class="mb-4">
+Add Category
+</h3>
+
+
+
+<form action="categories"
       method="post">
 
 
-    <label>
-        Name:
-    </label>
 
-    <br>
-
-
-    <input type="text"
-           name="name"
-           value="<%=name%>">
-
-
-    <br><br>
+<input type="hidden"
+       name="action"
+       value="insert">
 
 
 
-    <label>
-        Description:
-    </label>
-
-    <br>
+<div class="mb-3">
 
 
-    <input type="text"
-           name="description"
-           value="<%=description%>">
+<label class="form-label">
+
+Name
+
+</label>
 
 
-    <br><br>
+<input
+type="text"
+name="name"
+class="form-control"
+required
+placeholder="Enter category name">
+
+
+</div>
 
 
 
-    <button type="submit">
-        Save
-    </button>
+<div class="mb-3">
+
+
+<label class="form-label">
+
+Description
+
+</label>
+
+
+
+<textarea
+name="description"
+class="form-control"
+rows="4"
+placeholder="Enter description"></textarea>
+
+
+</div>
+
+
+
+<div>
+
+
+<button
+type="submit"
+class="btn btn-primary">
+
+Save
+
+</button>
+
+
+
+<a href="categories"
+class="btn btn-secondary">
+
+Back
+
+</a>
+
+
+</div>
+
 
 
 </form>
 
 
-<br>
+
+</div>
+
+</div>
 
 
-<a href="categories">
-    Back to Category List
-</a>
+</div>
+
+
+</div>
 
 
 
-</body>
-
-</html>
+<%@ include file="common/footer.jsp" %>

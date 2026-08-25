@@ -1,92 +1,140 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.hcmute.servletlogin.model.Category" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Category List</title>
-</head>
+<%@ include file="common/header.jsp" %>
 
 
-<body>
+
+<div class="card shadow">
 
 
-<h2>Category List</h2>
+<div class="card-body">
 
-<a href="category-form.jsp">
-    Add Category
+
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+
+
+<h3>
+Category Management
+</h3>
+
+
+<a href="category-form.jsp"
+class="btn btn-success">
+
++ Add Category
+
 </a>
 
-<br><br>
+
+</div>
 
 
-<table border="1">
+
+
+<table class="table table-bordered table-hover">
+
+
+<thead class="table-dark">
+
 
 <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Action</th>
-</tr>
 
+<th>ID</th>
 
-<%
-    List<Category> list =
-        (List<Category>) request.getAttribute("categories");
+<th>Name</th>
 
+<th>Description</th>
 
-    for(Category c : list){
-%>
-
-
-<tr>
-
-<td>
-    <%= c.getId() %>
-</td>
-
-<td>
-    <%= c.getName() %>
-</td>
-
-<td>
-    <%= c.getDescription() %>
-</td>
-
-
-<td>
-
-<a href="categories?action=edit&id=<%=c.getId()%>">
-    Edit
-</a>
-
-
-&nbsp;
-
-
-<a href="categories?action=delete&id=<%=c.getId()%>"
-   onclick="return confirm('Delete this category?')">
-    Delete
-</a>
-
-
-</td>
+<th width="200">
+Action
+</th>
 
 
 </tr>
 
 
-<%
-    }
-%>
+</thead>
+
+
+
+<tbody>
+
+
+<c:forEach var="c" items="${categories}">
+
+
+<tr>
+
+
+<td>
+${c.id}
+</td>
+
+
+
+<td>
+${c.name}
+</td>
+
+
+
+<td>
+${c.description}
+</td>
+
+
+
+<td>
+
+
+<a
+href="categories?action=edit&id=${c.id}"
+class="btn btn-warning btn-sm">
+
+Edit
+
+</a>
+
+
+
+<a
+href="categories?action=delete&id=${c.id}"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this category?')">
+
+Delete
+
+</a>
+
+
+</td>
+
+
+
+</tr>
+
+
+</c:forEach>
+
+
+
+</tbody>
+
 
 
 </table>
 
 
-</body>
 
-</html>
+</div>
+
+
+</div>
+
+
+
+<%@ include file="common/footer.jsp" %>

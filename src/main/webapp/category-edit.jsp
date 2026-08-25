@@ -1,105 +1,125 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
 <%@ page import="com.hcmute.servletlogin.model.Category" %>
 
 
+<%@ include file="common/header.jsp" %>
+
+
 <%
-    Category c =
+    Category category =
             (Category) request.getAttribute("category");
-
-
-    String error =
-            (String) request.getAttribute("error");
-%>
-
-
-<html>
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <title>Edit Category</title>
-
-</head>
-
-
-<body>
-
-
-<h2>Edit Category</h2>
-
-
-
-<%
-    if(error != null){
-%>
-
-<p style="color:red">
-    <%= error %>
-</p>
-
-<%
-    }
 %>
 
 
 
+<div class="row justify-content-center">
 
-<form action="categories?action=update"
+
+<div class="col-md-6">
+
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+
+<h3 class="mb-4">
+Edit Category
+</h3>
+
+
+
+<form action="categories"
       method="post">
 
 
-
-    <input type="hidden"
-           name="id"
-           value="<%=c.getId()%>">
-
-
-
-    Name:
-
-    <br>
-
-    <input type="text"
-           name="name"
-           value="<%= c.getName() == null ? "" : c.getName() %>">
-
-
-    <br><br>
+<input type="hidden"
+       name="action"
+       value="update">
 
 
 
-    Description:
-
-    <br>
-
-    <input type="text"
-           name="description"
-           value="<%= c.getDescription() == null ? "" : c.getDescription() %>">
+<input type="hidden"
+       name="id"
+       value="<%=category.getId()%>">
 
 
 
-    <br><br>
+<div class="mb-3">
 
 
-    <button type="submit">
-        Update
-    </button>
+<label class="form-label">
+Name
+</label>
+
+
+<input
+type="text"
+name="name"
+class="form-control"
+value="<%=category.getName()%>"
+required>
+
+
+</div>
+
+
+
+
+<div class="mb-3">
+
+
+<label class="form-label">
+Description
+</label>
+
+
+<textarea
+name="description"
+class="form-control"
+rows="4"><%=category.getDescription()%></textarea>
+
+
+</div>
+
+
+
+
+<button
+type="submit"
+class="btn btn-warning">
+
+Update
+
+</button>
+
+
+
+<a href="categories"
+class="btn btn-secondary">
+
+Back
+
+</a>
+
 
 
 </form>
 
 
-<br>
+</div>
 
 
-<a href="categories">
-    Back
-</a>
+</div>
+
+
+</div>
+
+
+</div>
 
 
 
-</body>
-
-</html>
+<%@ include file="common/footer.jsp" %>
