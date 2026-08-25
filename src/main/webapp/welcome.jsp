@@ -1,27 +1,41 @@
-<html>
+<%@ page contentType="text/html; charset=UTF-8" %>
 
-<head>
-    <title>Welcome</title>
-</head>
 
-<body>
+<%@ include file="common/header.jsp" %>
 
-<h2>
-    Welcome ${sessionScope.username}
+
+<div class="card shadow">
+
+<div class="card-body">
+
+
+<h2 class="card-title">
+
+Welcome ${sessionScope.username}
+
 </h2>
 
-<br>
 
-<a href="categories">
-    Manage Categories
+
+<p class="text-muted">
+
+You are logged in.
+
+</p>
+
+
+<a href="categories"
+class="btn btn-primary">
+
+Manage Category
+
 </a>
 
-<br><br>
 
-<a href="logout">
-    Logout
-</a>
 
-</body>
+</div>
 
-</html>
+</div>
+
+
+<%@ include file="common/footer.jsp" %>
